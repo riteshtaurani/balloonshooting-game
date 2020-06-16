@@ -2,8 +2,7 @@ class Game{
 constructor()
 {
     this.player = new Player();
-    this.balloons = [];
-
+    this.balloon = new Balloon();
 
 }
 preload(){
@@ -11,22 +10,22 @@ preload(){
     this.background = new Background();
     this.playerImg = loadImage("assets/images/shooter.png");
     this.backgroundImg = loadImage("assets/images/background_image.jpg");
-    for (let i =0 ; i < 3 ; i++){
-        this.balloons[i] = loadImage ('assets/images/balloon' + i + '.png')   
-    }
-  
+    this.balloon.preload();
+    
 }
 
 setup()
 {
     this.player.setupPlayer();
     this.player.getMouseVector();
+    this.balloon.setup();
 }
 drawGame()
 {
     image(this.backgroundImg,0,0,width,height);
+    // this.player.drawReticle();
+    this.balloon.drawBalloon();
     this.player.drawingThePlayer();
-    this.player.drawReticle();
 }
 
 }

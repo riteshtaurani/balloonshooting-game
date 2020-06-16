@@ -10,28 +10,18 @@ constructor (x,y,r,img){
     this.balloon = img;
 }
 
-preload(){
-    for (let i =0 ; i < 3 ; i++){
-        balloons[i] = loadImage (`assets/images/balloon${i}.png`);   
-    }
-}
-setup(){
-
-    for (let i = 0 ; i < 80 ; i++){
-        let x = random(width-200);
-        let y = random(height-200);
-        let r = random (20,40);
-        let balloon = random(balloons);
-        let b = new Balloon (x,y,r,balloon);
-        bubbles.push(b);
-    }
-
-}
 
 drawBalloon(){
     for (let i =0; i < bubbles.length ; i++){
         bubbles[i].show();
+        bubbles[i].move();
     }
+}
+
+move(){
+
+    this.x = this.x + random(-2,2);
+    this.y = this.y + random(-2,2);
 }
 
 show (){

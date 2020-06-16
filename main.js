@@ -18,7 +18,6 @@ function draw() {
 
 }
 
-
 function mousePressed(){
     let mouseVector = game.player.getMouseVector();
     oneBullet = new bullet(mouseVector.x, mouseVector.y);

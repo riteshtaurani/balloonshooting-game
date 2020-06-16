@@ -12,7 +12,7 @@ preload(){
     this.background = new Background();
     this.playerImg = loadImage("assets/images/shooter.png");
     this.backgroundImg = loadImage("assets/images/background_image.jpg");
-    this.bulletimg = loadImage("assets/images/bullet.png")
+    this.bulletimg = loadImage("assets/images/bullet.png");
     this.balloon.preload();
     
 }
@@ -31,10 +31,8 @@ drawGame()
     this.player.drawingThePlayer();
     this.bullets.forEach(bullet=>{
         bullet.display();
-        bullet.checkCollision(this.balloon);
     })
-    cursor(CROSS); 
-    this.balloon.checkCollision();
+    cursor(CROSS);
 }
 
 }

@@ -1,8 +1,17 @@
 const game = new Game();
+let bubbles = [];
 
 function setup() {   
     createCanvas(1200, 600);
     game.setup();
+    angleMode(DEGREES);
+    for (let i = 0 ; i < 20 ; i++){
+        let x = random(width);
+        ley y = reandom(height);
+        let r = random (20,60);
+        let b = new Bubble (x,y,r);
+        bubbles.push(b);
+    }
 }
   
 
@@ -17,21 +26,28 @@ function draw() {
 
 }
 
-let bulletsFired = [];
-
-function mousePressed(){
-	let mouseVector = getMouseVector();
-	oneBullet = new bullet(mouseVector.x, mouseVector.y);
-    bulletsFired.push(oneBullet);
+show(){
+    stroke(255);
+    strokeWeight (4);
+    fill(this.brightness,125);
+    ellipse(this.x,this.y,this.r *2);
 }
+// let bulletsFired = [];
 
-for (var i = 0; i < bulletsFired.length; i++){
-    bulletsFired[i].display();
-    bulletsFired[i].update();
-    if (bulletsFired[i].outOfBounds()){
-          bulletsFired.splice(i,1);
-    }
-    else if (bulletsFired[i].hitScan()){
-          bulletsFired.splice(i,1);
-    }
-}
+// function mousePressed(){
+//     console.log("mouse is pressed");
+//     let mouseVector = game.player.getMouseVector();
+// 	//oneBullet = new bullet(mouseVector.x, mouseVector.y);
+//     //bulletsFired.push(oneBullet);
+// }
+
+// for (var i = 0; i < bulletsFired.length; i++){
+//     bulletsFired[i].display();
+//     bulletsFired[i].update();
+//     if (bulletsFired[i].outOfBounds()){
+//           bulletsFired.splice(i,1);
+//     }
+//     // else if (bulletsFired[i].hitScan()){
+//     //       bulletsFired.splice(i,1);
+//     // }
+// }

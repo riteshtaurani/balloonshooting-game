@@ -14,14 +14,15 @@ constructor (x,y,r,img){
 }
 
 preload(){
-   /*  for (let i =0 ; i < 4 ; i++){
-        balloons[i] = loadImage (`assets/images/balloon${i}.png`);   
-    } */
+
     balloons=[
         {src:loadImage("assets/images/balloon0.png"), color:"blue"},
         {src:loadImage("assets/images/balloon1.png"), color:"green"},
+        {src:loadImage("assets/images/balloon2.png"), color:"pink"},
+        {src:loadImage("assets/images/balloon3.png"), color:"yellow"},
+
     ]
-    console.log("ballons")
+    //console.log("ballons")
 }
 setup(){
 console.log("setup")
@@ -63,17 +64,27 @@ collide(bullet)
     for (let i =0; i < bubbles.length ; i++){
         let d = dist(bubbles[i].x+bubbles[i].r/2, bubbles[i].y+bubbles[i].r/2, bullet.x+20/2, bullet.y+20/2);
         //console.log(bubbles[0].balloon);
-    if (d < 20)
+    if (d < 10)
     {
         //console.log("boom the ballon"); 
-        console.log(bubbles[i]);
+        //let color = bubbles[i].color;
         bubbles.splice(i,1);
-        points++;
         bullet.xSpd = 0;
         bullet.x = 10000;
         bullet.ySpd = 0;
-
-        
+        switch (bubbles[i].color){
+            case "yellow":
+            points += 20;
+            break;
+            case "blue":
+            points += 10;
+            break;
+            case "pink":
+            points += 5;
+            break;
+            case "green":
+            points += 2;
+        }
 
     }
         //console.log(bubbles[0].x,bubbles[0].y);

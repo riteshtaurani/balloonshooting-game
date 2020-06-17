@@ -18,7 +18,7 @@ function preload(){
 function draw() {
     mouseY = 400;
     if (shots > 1 ){
-        frameRate(300)
+        frameRate(1000)
         game.drawGame();
     }
     else {

@@ -31,9 +31,11 @@ drawGame()
     this.player.drawingThePlayer();
     this.bullets.forEach(bullet=>{
         bullet.display();
+        this.balloon.collide(bullet);
     })
-    cursor(CROSS);
 }
+
+
 
 }
 

@@ -10,7 +10,9 @@ class bullet{
 	display(){
 
 		push()
-		image(game.bulletimg,this.x , this.y , 20 , 20);
+		image(game.bulletimg,this.x , this.y , 20 ,20);
+		fill("red")
+		circle(this.x+20/2,this.y+20/2,10)
 		this.update()
 		this.outOfBounds()
 		pop();
@@ -22,27 +24,10 @@ class bullet{
 		this.xSpd *= 0.994;
 		this.ySpd *= 0.994;
 	}
+
 	
-	preload(){
-		for (let i =0 ; i < 4 ; i++)
-		{
-			balloons[i] = loadImage (`assets/images/balloon${i}.png`);   
-		}
-	}
-	setup(){
 	
-		for (let i = 0 ; i < 80 ; i++)
-		{
-			let x = random(width-100);
-			let y = random(height-420);
-			let r = random (20,30);
-			let balloon = random(balloons);
-			let b = new Balloon (x,y,r,balloon);
-			bubbles.push(b);
-		}
-	
-	}
-	
+
 	outOfBounds(){
 		return(this.x > width+10 || this.x < -10 || this.y > height+10 || this.y < -10);
 	}

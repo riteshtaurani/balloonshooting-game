@@ -1,4 +1,6 @@
 const game = new Game();
+let shots = 20;
+let points = 0;
 
 function setup() {   
     createCanvas(1200, 600);
@@ -14,7 +16,15 @@ function preload(){
 }    
   
 function draw() {
-    game.drawGame();
+    mouseY = 400;
+    if (shots > 1 ){
+        frameRate(300)
+        game.drawGame();
+    }
+    else {
+        console.log(points);
+    }
+    
 
 }
 
@@ -22,5 +32,9 @@ function mousePressed(){
     let mouseVector = game.player.getMouseVector();
     oneBullet = new bullet(mouseVector.x, mouseVector.y);
     game.bullets.push(oneBullet);
+    shots --;
+    console.log(game.bullets);
+    
+
 }
 

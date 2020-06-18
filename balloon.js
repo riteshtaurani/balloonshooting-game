@@ -26,7 +26,7 @@ preload(){
 }
 setup(){
 console.log("setup")
-    for (let i = 0 ; i < 60 ; i++){
+    for (let i = 0 ; i < 100 ; i++){
         let x = random(width-100);
         let y = random(height-400);
         let r = random (20,40);
@@ -50,7 +50,7 @@ drawBalloon(){
 }
 
 move(){
-    this.x = this.x + random(-2,2);
+    this.x = this.x + random(-6,6);
     this.y = this.y + random(-2,2);
     }
 
@@ -64,7 +64,7 @@ collide(bullet)
     for (let i =0; i < bubbles.length ; i++){
         let d = dist(bubbles[i].x+bubbles[i].r/2, bubbles[i].y+bubbles[i].r/2, bullet.x+20/2, bullet.y+20/2);
         //console.log(bubbles[0].balloon);
-    if (d < 10)
+    if (d < 15)
     {
         //console.log("boom the ballon"); 
         //let color = bubbles[i].color;

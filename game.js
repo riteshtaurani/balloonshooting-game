@@ -4,7 +4,12 @@ constructor()
 {
     this.player = new Player();
     this.balloon = new Balloon();
-    this.bullets=[]
+    this.bullets=[];
+    this.intro = false;
+    this.intro = true;
+    this.start = false;
+    this.gameOver = false;
+    this.timer;
     
 }
 preload(){
@@ -33,6 +38,7 @@ drawGame()
         bullet.display();
         this.balloon.collide(bullet);
     })
+    cursor(CROSS);
 }
 
 

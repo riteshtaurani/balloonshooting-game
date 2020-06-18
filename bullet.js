@@ -2,8 +2,8 @@ class bullet{
 	constructor(xSpd, ySpd){
 		this.x = game.player.x+game.playerImg.width/1.9 ;
 		this.y =game.player.y+game.playerImg.height/1.9;
-		this.xSpd = 30*xSpd;
-		this.ySpd = 30*ySpd;
+		this.xSpd = 60*xSpd;
+		this.ySpd = 60*ySpd;
 	}
 
 	
@@ -11,7 +11,6 @@ class bullet{
 
 		push()
 		image(game.bulletimg,this.x , this.y , 20 ,20);
-		fill("red")
 		circle(this.x+20/2,this.y+20/2,10)
 		this.update()
 		this.outOfBounds()

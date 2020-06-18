@@ -11,7 +11,6 @@ class bullet{
 
 		push()
 		image(game.bulletimg,this.x , this.y , 20 ,20);
-		circle(this.x+20/2,this.y+20/2,10)
 		this.update()
 		this.outOfBounds()
 		pop();

@@ -23,6 +23,19 @@ function setup() {
     {
         back_sound.loop();
     }
+    Retry = createButton('retry');
+	Retry.hide();
+	
+	if (!Cookies.get('highscore')){
+		Cookies.set('highscore', '0');
+	}
+    highScore = Cookies.get('highscore');
+    
+    if (game.start === true){
+    back_sound.setVolume(0.3);
+    back_sound.play();
+    back_sound.playMode('sustain');
+    }
 
 }
   
@@ -30,7 +43,9 @@ function setup() {
  
   
 function draw() {
+   
     if (game.intro === true && game.start === false) {
+        image(game.backgroundImg,0,0,width,height);
         fill('black');
         textFont('Ubuntu');
         textSize(65);
@@ -45,12 +60,13 @@ function draw() {
         text(`POINTS AS BELOW`, 600, 440, 500, 100);
       } 
     //mouseY = 400;
-    if (game.start === true && shots > 1 ){
+    else if (game.start === true && shots > -1 ){
         game.intro === false;
         game.gameOver === false;
         //frameRate()
         game.drawGame();
-        //back_sound.play();
+
+        back_sound.vol
         fill('white');
         textFont('Ubuntu');
         text(`SCORE ${points}`, 900, 100, 380, 100);
@@ -59,11 +75,13 @@ function draw() {
             fill('red');
         }
         text(game.timer, 700, 100, 300, 100);
-        game.timer--;
+        if (frameCount % 60 === 0) {
+            game.timer--;
+          }
       
 
     }
-    else {
+    if (shots === 0 || game.timer === 0) {
         game.gameOver === true;
         gameOver();
     } 
@@ -77,7 +95,9 @@ function mousePressed(){
     game.bullets.push(oneBullet);
     shots --;
     //console.log(game.bullets);
+    if (game.start === true || game.gameOver === false){
     gunshot.play();
+    }
 
 }
 
@@ -89,6 +109,10 @@ function keyPressed() {
       game.gameOver = false;
       game.timer = 60;
       console.log('enter');
+    }
+    if(keyCode === 32 && game.gameOver === true){
+        window.location.reload();
+        //console.log("replay");
     }
   }
 
@@ -104,7 +128,7 @@ function keyPressed() {
 	textAlign(CENTER);
 	textSize(50);
 	fill(170,20,20);
-	text("YOU DIED",300,300)
+	text("GAME OVER",300,300)
 		
 	textFont('Helvetica');
 	textSize(18);
@@ -119,17 +143,12 @@ function keyPressed() {
 	}
 	
 	let highScoreString = "highscore: " + highScore;
-	text(highScoreString, 300, 360);
+    text(highScoreString, 300, 360);
+    text("PLease press SpaceBar to try again", 300,300)
 	
-	// Retry.show();
-	// Retry.position(250, 380);
-	// Retry.size(100,30);
-	// Retry.style('background-color', '#202020');
-	// Retry.style('color', '#FFFFFF');
-	// Retry.mousePressed(reset);
 	
-	//pop();
-    //noLoop();
+	pop();
+    noLoop();
 }
 
 // function playBackground()
@@ -138,4 +157,6 @@ function keyPressed() {
 //         back_sound.loop();
 //     }
 // }
+
+
 

@@ -8,7 +8,7 @@ constructor()
     this.intro = false;
     this.intro = true;
     this.start = false;
-    this.gameOver = false;
+    this.gameOver = true;
     this.timer;
     
 }

@@ -26,7 +26,6 @@ function setup() {
 		Cookies.set('highscore', '0');
 	}
     highScore = Cookies.get('highscore');
-    console.log(game.start);
     
 
 }
@@ -79,7 +78,6 @@ function draw() {
     }
     if (shots === 0 || game.timer < 0) {
         game.gameOver = true;
-        console.log(game.gameOver);
         gameOver();
     } 
     
@@ -101,12 +99,10 @@ function mousePressed(){
 
 function keyPressed() {
 
-    console.log(keyCode);
     if (keyCode === 13) {
       game.start = true;
       game.gameOver = false;
       game.timer = 60;
-      console.log('enter');
       playBackground();
     }
     if(keyCode === 32 && game.gameOver == true){

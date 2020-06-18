@@ -16,12 +16,11 @@ class Player {
         
        
      this.x=mouseX-(this.width/2);
-        console.log(mouseX);
         if (this.x > 900){
              this.x = 900;
         }
-        if (this.x < 300){
-            this.x = 300;
+        if (this.x < 400){
+            this.x = 400;
        }
         image(game.playerImg,this.x, this.y,);
         

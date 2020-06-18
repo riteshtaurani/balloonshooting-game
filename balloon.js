@@ -25,7 +25,6 @@ preload(){
     //console.log("ballons")
 }
 setup(){
-console.log("setup")
     for (let i = 0 ; i < 150 ; i++){
         let x = random(width-100);
         let y = random(height-400);
@@ -66,8 +65,7 @@ collide(bullet)
         //console.log(bubbles[0].balloon);
     if (d < 15)
     {
-        //console.log("boom the ballon"); 
-        //let color = bubbles[i].color;
+    
         balloon_pop.play();
         balloon_pop.setVolume(0.6);
         bubbles.splice(i,1);

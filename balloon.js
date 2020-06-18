@@ -26,7 +26,7 @@ preload(){
 }
 setup(){
 console.log("setup")
-    for (let i = 0 ; i < 100 ; i++){
+    for (let i = 0 ; i < 150 ; i++){
         let x = random(width-100);
         let y = random(height-400);
         let r = random (20,40);

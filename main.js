@@ -92,7 +92,7 @@ function mousePressed(){
     game.bullets.push(oneBullet);
     shots --;
     //console.log(game.bullets);
-    if (game.start == true || game.gameOver == false){
+    if (game.start == true && game.gameOver == false){
     gunshot.play();
     gunshot.setVolume(0.3);
     }

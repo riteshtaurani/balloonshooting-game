@@ -9,6 +9,5 @@ class Background{
         image(this.backgroundImg , width , height)
     }    
 
-
 }
 

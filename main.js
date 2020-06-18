@@ -41,16 +41,18 @@ function draw() {
         textFont('Georgia')
         textSize(50);
         text(`Let's have some fun!!!`, 600, 20, 500, 200);
-        text(`Press Enter To Begin`, 600, 100, 650, 200);
+        text(`Press Enter To Begin`, 600, 100, 600, 200);
         textSize(40);
-        text(`SHOOT - Left Click`, 600, 200, 500, 100);
-        fill('white')
-        text(`Points as below:`, 600, 250, 500, 100);
+        text(`SHOOT - Left Click`, 600, 150, 500, 100);
+        text(`Points as below:`, 600, 200, 500, 100);
         textSize(30)
-        text(`Yellow - 20`,600, 300, 500, 100);
-        text(`Blue - 10`,600, 350, 500, 100);
-        text(`pink - 5`,600, 400, 500, 100);
-        text(`green- 2`,600, 450, 500, 100);
+        fill('white')
+        text(`Yellow - 20`,600, 250, 500, 100);
+        text(`Blue - 10`,600, 300, 500, 100);
+        text(`pink - 5`,600, 350, 500, 100);
+        text(`green- 2`,600, 400, 500, 100);
+        textSize(40);
+        text(`You get 20 shots and 1 minute to play the game`,350,475)
         fill('black');
         textSize(50)
         text(`To beat your own highscore, keep playing `,300, 550)

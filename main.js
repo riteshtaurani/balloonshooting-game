@@ -19,10 +19,6 @@ function setup() {
     createCanvas(1600, 600);
     game.setup();
     angleMode(DEGREES);
-    if (game.start === true)
-    {
-        back_sound.loop();
-    }
     Retry = createButton('retry');
 	Retry.hide();
 	
@@ -30,7 +26,7 @@ function setup() {
 		Cookies.set('highscore', '0');
 	}
     highScore = Cookies.get('highscore');
-    
+    console.log(game.start);
     if (game.start === true){
     back_sound.setVolume(0.3);
     back_sound.play();
@@ -46,18 +42,24 @@ function draw() {
    
     if (game.intro === true && game.start === false) {
         image(game.backgroundImg,0,0,width,height);
-        fill('black');
-        textFont('Ubuntu');
-        textSize(65);
-        text(`BALLOON-SHOOTING`, 400, 30, 600, 100);
-        fill('blue');
+        fill('darkblue');
+        textFont('Georgia')
         textSize(50);
-        text(`Let's have some fun`, 600, 260, 500, 200);
-        text(`Press Enter To Begin`, 600, 310, 650, 200);
-        fill('blue');
+        text(`Let's have some fun!!!`, 600, 20, 500, 200);
+        text(`Press Enter To Begin`, 600, 100, 650, 200);
         textSize(40);
-        text(`FIRE - Left Click`, 600, 400, 500, 100);
-        text(`POINTS AS BELOW`, 600, 440, 500, 100);
+        text(`SHOOT - Left Click`, 600, 200, 500, 100);
+        fill('white')
+        text(`Points as below:`, 600, 250, 500, 100);
+        textSize(30)
+        text(`Yellow - 20`,600, 300, 500, 100);
+        text(`Blue - 10`,600, 350, 500, 100);
+        text(`pink - 5`,600, 400, 500, 100);
+        text(`green- 2`,600, 450, 500, 100);
+        fill('black');
+        textSize(50)
+        text(`To beat your own highscore, keep playing `,300, 550)
+
       } 
     //mouseY = 400;
     else if (game.start === true && shots > -1 ){
@@ -65,16 +67,14 @@ function draw() {
         game.gameOver === false;
         //frameRate()
         game.drawGame();
-
-        back_sound.vol
         fill('white');
         textFont('Ubuntu');
-        text(`SCORE ${points}`, 900, 100, 380, 100);
-        text(`SHOTS ${shots}`, 900, 145, 500, 100);
+        document.querySelector("#score").innerText = `SCORE ${points}`;
+        document.querySelector("#shots").innerText = `SHOTS ${shots}`;
         if (game.timer <= 10) {
             fill('red');
         }
-        text(game.timer, 700, 100, 300, 100);
+        document.querySelector("h3").innerText = `TIME LEFT: ${game.timer}`;
         if (frameCount % 60 === 0) {
             game.timer--;
           }
@@ -95,7 +95,7 @@ function mousePressed(){
     game.bullets.push(oneBullet);
     shots --;
     //console.log(game.bullets);
-    if (game.start === true || game.gameOver === false){
+    if (game.start == true || game.gameOver == false){
     gunshot.play();
     }
 
@@ -118,23 +118,20 @@ function keyPressed() {
 
   function gameOver(){
 	push()
-	
-	print("DED");
 	noStroke();
 	fill(20)
-	rect(0,200,600,200)
-	
+	rect(450,200,600,200)
 	textFont('Georgia');
 	textAlign(CENTER);
 	textSize(50);
 	fill(170,20,20);
-	text("GAME OVER",300,300)
+	text("GAME OVER",750,250)
 		
 	textFont('Helvetica');
 	textSize(18);
 	fill(235);
 	let scoreString = "score: " + points;
-	text(scoreString, 300, 340);
+	text(scoreString, 700, 340);
 	
 	if (points > highScore) {
 		highScore = points;
@@ -143,9 +140,9 @@ function keyPressed() {
 	}
 	
 	let highScoreString = "highscore: " + highScore;
-    text(highScoreString, 300, 360);
-    text("PLease press SpaceBar to try again", 300,300)
-	
+    text(highScoreString, 700, 360);
+    textSize(20)
+    text("PLease press SpaceBar to try again", 700,380)
 	
 	pop();
     noLoop();

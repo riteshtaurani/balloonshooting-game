@@ -6,3 +6,12 @@ body{
     align-items: center;
 }
 
+.head{
+    display: flex;
+    justify-content:space-between;
+}
+.disp{
+    display: flex;
+    justify-content: space-between;
+}
+

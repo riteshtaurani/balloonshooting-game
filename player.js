@@ -1,7 +1,7 @@
 class Player {
     constructor()
     {
-        this.x = 500;
+        this.x = 700;
     }
 
     setupPlayer ()
@@ -17,8 +17,8 @@ class Player {
        
      this.x=mouseX-(this.width/2);
         console.log(mouseX);
-        if (this.x > 700){
-             this.x = 700;
+        if (this.x > 900){
+             this.x = 900;
         }
         if (this.x < 300){
             this.x = 300;

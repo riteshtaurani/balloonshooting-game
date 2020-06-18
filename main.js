@@ -27,11 +27,7 @@ function setup() {
 	}
     highScore = Cookies.get('highscore');
     console.log(game.start);
-    if (game.start === true){
-    back_sound.setVolume(0.3);
-    back_sound.play();
-    back_sound.playMode('sustain');
-    }
+    
 
 }
   
@@ -74,15 +70,16 @@ function draw() {
         if (game.timer <= 10) {
             fill('red');
         }
-        document.querySelector("h3").innerText = `TIME LEFT: ${game.timer}`;
+        document.querySelector("h3").innerText = `TIME LEFT: 00:${game.timer}`;
         if (frameCount % 60 === 0) {
             game.timer--;
           }
       
 
     }
-    if (shots === 0 || game.timer === 0) {
-        game.gameOver === true;
+    if (shots === 0 || game.timer < 0) {
+        game.gameOver = true;
+        console.log(game.gameOver);
         gameOver();
     } 
     
@@ -97,6 +94,7 @@ function mousePressed(){
     //console.log(game.bullets);
     if (game.start == true || game.gameOver == false){
     gunshot.play();
+    gunshot.setVolume(0.3);
     }
 
 }
@@ -109,8 +107,9 @@ function keyPressed() {
       game.gameOver = false;
       game.timer = 60;
       console.log('enter');
+      playBackground();
     }
-    if(keyCode === 32 && game.gameOver === true){
+    if(keyCode === 32 && game.gameOver == true){
         window.location.reload();
         //console.log("replay");
     }
@@ -128,10 +127,10 @@ function keyPressed() {
 	text("GAME OVER",750,250)
 		
 	textFont('Helvetica');
-	textSize(18);
+	textSize(25);
 	fill(235);
 	let scoreString = "score: " + points;
-	text(scoreString, 700, 340);
+	text(scoreString, 750, 300);
 	
 	if (points > highScore) {
 		highScore = points;
@@ -140,20 +139,22 @@ function keyPressed() {
 	}
 	
 	let highScoreString = "highscore: " + highScore;
-    text(highScoreString, 700, 360);
-    textSize(20)
-    text("PLease press SpaceBar to try again", 700,380)
+    text(highScoreString, 750, 340);
+    textSize(30)
+    text("Please press SpaceBar to try again", 750,390)
 	
 	pop();
     noLoop();
 }
 
-// function playBackground()
-// {
-//     if (!back_sound.isPLaying()){
-//         back_sound.loop();
-//     }
-// }
+ function playBackground()
+ {
+    
+        back_sound.setVolume(0.3);
+        back_sound.play();
+        back_sound.playMode('sustain');
+     
+}
 
 
 

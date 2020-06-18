@@ -68,6 +68,8 @@ collide(bullet)
     {
         //console.log("boom the ballon"); 
         //let color = bubbles[i].color;
+        balloon_pop.play();
+        balloon_pop.setVolume(0.6);
         bubbles.splice(i,1);
         bullet.xSpd = 0;
         bullet.x = 10000;
